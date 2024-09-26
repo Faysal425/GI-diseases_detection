@@ -2,7 +2,7 @@ import os
 import cv2
 import numpy as np
 
-data_path =r'D:\MN\gastro three stage\stage1'
+data_path = r'D:\MN\gastro three stage\stage1'
 
 categories = os.listdir(data_path)
 print("Number of classes:", categories)
@@ -34,17 +34,18 @@ for category in categories:
             # Convert the image to grayscale
             gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-            # Apply CLAHE to the grayscale image
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-            clahe_img = clahe.apply(gray_img)
+            # Resize the grayscale image to 124x124
+            imga = cv2.resize(gray_img, (img_size, img_size))
 
-            imga = cv2.resize(clahe_img, (img_size, img_size))
-            imga = imga / 255.0
+            # Apply Z-score normalization to the resized image
+            mean = np.mean(imga)
+            std = np.std(imga)
+            imga = (imga - mean) / (std if std != 0 else 1)  # Avoid division by zero
+
             data.append(imga)
             target.append(label_dict[category])
         except Exception as e:
             print(f'Exception processing image {img_name}: {e}')
-
 
 data = np.array(data)
 target = np.array(target)
@@ -52,12 +53,11 @@ target = np.array(target)
 print(data.shape)
 print(target.shape)
 
-
-
+# Save the processed data and labels
 np.save("D:/MN/gastro three stage/SaveFileForStage1/FirstStageX.npy", data)
 np.save("D:/MN/gastro three stage/SaveFileForStage1/SecondStageX.npy", target)
 
-####### image shape checking   ##########
+####### image shape checking ##########
 import numpy as np
 
 # Load the numpy array containing the images
