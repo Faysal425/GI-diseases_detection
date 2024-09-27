@@ -23,10 +23,7 @@ def process_image(image):
     # Gaussian filter
     gaussian_filtered = gaussian(sharpened, sigma=1, multichannel=True)
 
-    # Convert to 8-bit image
-    final_image = img_as_ubyte(gaussian_filtered)
-
-    return final_image
+    return gaussian_filtered
 
 def process_folder(input_folder, output_folder):
     if not os.path.exists(output_folder):
