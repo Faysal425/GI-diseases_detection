@@ -8,7 +8,7 @@ To set up the project, you need to install the necessary Python packages. You ca
 
 1. Clone the repository to your local machine:
     ```python
-    git clone https://github.com/your-username/repo-name.git
+    git clone https://github.com/your-username/your-repo-name.git
     cd your-repo-name
     ```
 
