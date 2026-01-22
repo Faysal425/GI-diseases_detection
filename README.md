@@ -1,6 +1,6 @@
 ## Overview
 
-This project develops a computer-aided diagnosis (CAD) system for gastrointestinal (GI) disorders using a three-stage deep learning framework. The architecture integrates a feature extractor, a Parallel Squeeze-and-Excitation Convolutional Neural Network (PSE-CNN), and Principal Component Analysis (PCA) with a Deep Extreme Learning Machine (DELM) classifier.
+This project develops a computer-aided diagnosis (CAD) system for gastrointestinal (GI) disorders. The architecture integrates a feature extractor as a Parallel Squeeze-and-Excitation Convolutional Neural Network (PSE-CNN).
 
 ## Installation
 
